@@ -1,0 +1,36 @@
+{
+  "editor_entries_added": 554,
+  "native_resource_alias_entries_added": 8986,
+  "native_resource_distinct_labels_added": 1902,
+  "proteus_zh_CN.qm": {
+    "original_entries": 6226,
+    "bilingual_original_entries": 6042,
+    "additional_entries": 9540,
+    "total_entries": 15766
+  },
+  "qt_zh_CN.qm": {
+    "original_entries": 1398,
+    "bilingual_original_entries": 1327,
+    "additional_entries": 53,
+    "total_entries": 1451
+  },
+  "verification": {
+    "Qt4_runtime": "QtCore4.dll from the installed Proteus, loaded in a separate 32-bit Python process",
+    "proteus_lookup_checks_passed": 15765,
+    "qt_lookup_checks_passed": 1451,
+    "Qt4_system_locale": "en_US",
+    "locale_based_load_proteus": true,
+    "locale_based_load_qt": true,
+    "original_keys_and_record_counts_preserved": true,
+    "printf_placeholder_counts_checked": true,
+    "original_shortcut_suffixes_checked": true,
+    "running_Proteus_modified_or_restarted": false,
+    "visual_layout_checked_in_Proteus": false
+  },
+  "sha256": {
+    "proteus_en_US.qm": "39a72f0a18b51751caa73d79577d064502c3aa71fd5c428f7f85606d9c2eca57",
+    "proteus_zh_CN.qm": "39a72f0a18b51751caa73d79577d064502c3aa71fd5c428f7f85606d9c2eca57",
+    "qt_en_US.qm": "d368c1be21313271b01aca3ab4b50033fcb3074503af290018b328c0def62117",
+    "qt_zh_CN.qm": "d368c1be21313271b01aca3ab4b50033fcb3074503af290018b328c0def62117"
+  }
+}
