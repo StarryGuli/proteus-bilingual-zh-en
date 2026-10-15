@@ -1,72 +1,77 @@
-# Proteus 8.17 中英对照语言包
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="Proteus 8.17 bilingual language pack: English first, 中文 right after, shown on a Proteus context menu">
+</p>
 
-把 Proteus 8 Professional 的界面从「纯中文」或「纯英文」改成 **英文在前、中文在后** 的对照显示，例如：
+<p align="center"><b>English</b> · <a href="./README.zh-CN.md">简体中文</a></p>
 
-```
-Open Project 打开工程
-Place Wire Label 添加网络标号
-Highlight Net on PCB Layout 在PCB布版中高亮显示网络
-```
+Replaces the language files of **Proteus 8 Professional 8.17** so every menu, dialog and right-click label reads `English 中文`. Handy when you follow English tutorials or datasheets but still want the Chinese next to each term.
 
-只替换语言文件（`.qm`），不修改 Proteus 的 EXE、DLL、元件库和许可证。
+Only `.qm` translation files are swapped. No EXE, DLL, component library or license is touched.
 
-| 菜单 | 右键菜单 |
+<p align="center">
+  <img src="./docs/screenshots/schematic-capture.jpg" width="100%" alt="Proteus schematic capture with bilingual menu bar: File 文件, Edit 编辑, View 视图, Tool 工具, Design 设计">
+</p>
+
+<table>
+  <tr>
+    <td width="50%"><img src="./docs/screenshots/file-menu.jpg" alt="File menu: Open Project 打开工程, Save Project 保存工程"></td>
+    <td width="50%"><img src="./docs/screenshots/context-menu.jpg" alt="Right-click menu: Place Wire Label 添加网络标号, Highlight Net on current Sheet"></td>
+  </tr>
+</table>
+
+## Install (Windows)
+
+1. Save your project and fully quit Proteus.
+2. **Back up** the whole `Translations` folder in your Proteus install directory.
+3. Copy the four files from [`release/Translations/`](release/Translations) into that `Translations` folder, replacing files with the same name. Don't nest an extra folder.
+4. Start Proteus.
+
+**Undo:** quit Proteus and restore your backup. If you had no `*_en_US.qm` files before, deleting `proteus_en_US.qm` and `qt_en_US.qm` is enough.
+
+### Why four files?
+
+<p align="center">
+  <img src="./assets/readme/load-order.svg" width="100%" alt="The system region en_US or zh_CN makes Qt 4 load proteus_LOCALE.qm and qt_LOCALE.qm; all four files carry the same bilingual content">
+</p>
+
+Proteus's bundled Qt 4 picks the file by system region. Some machines report `en_US` even when Windows is set to Chinese, so installing only the `zh_CN` pair silently does nothing. This does not change your Windows language or region.
+
+## What is covered
+
+| Area | Result |
 |---|---|
-| ![文件菜单](docs/screenshots/file-menu.jpg) | ![右键菜单](docs/screenshots/context-menu.jpg) |
+| Original pack | All 6,226 main-catalog entries kept, lookup keys unchanged, now English first |
+| Code editor | 554 commands, syntax-highlighting and style names added |
+| Menus and dialogs | 1,902 labels read from the installed EXE/DLL resources (resource-name and case aliases included, so alias count is not the translation count) |
+| Qt widgets | 53 entries from the official Qt 4.8 `zh_CN` catalog that the original pack lacked |
+| Left as-is | Component identifiers, file paths, protocol names, numbers, shortcuts |
 
-![原理图绘制界面](docs/screenshots/schematic-capture.jpg)
+**Not covered:** help files, sample projects, component data, and any text hard-coded in Proteus that never goes through the translation API.
 
-## 安装（Windows）
+**Known limit:** fixed-width buttons, menus and dialogs can truncate the longer bilingual text. I have checked the menu bar, File menu, right-click menus and schematic capture in Proteus 8.17 (screenshots above), not every screen.
 
-1. 保存工程，完全退出 Proteus。
-2. **备份** 安装目录下整个 `Translations` 文件夹。
-3. 把 [`release/Translations/`](release/Translations) 里的 4 个 `.qm` 文件复制到安装目录的 `Translations` 中，同名文件替换，不要多套一层文件夹。
-4. 重新启动 Proteus。
+## How it was verified
 
-> **为什么是 4 个文件？** Proteus 内置的 Qt4 按系统区域设置选文件。区域是 `en_US` 时读 `*_en_US.qm`，是 `zh_CN` 时读 `*_zh_CN.qm`。两组内容相同，都复制才不会因区域不同而不生效。这不会更改 Windows 的语言或区域设置。
+The files were read back entry by entry through the `QtCore4.dll` that ships with Proteus, in a separate 32-bit Python process: 15,765 / 15,765 main-catalog and 1,451 / 1,451 Qt-catalog lookups pass, and both file types auto-load under the `en_US` locale. Original keys, entry counts, `printf` placeholder counts and tab-separated shortcuts were also compared with the source pack. Details and SHA-256 hashes are in [`release/validation.json`](release/validation.json).
 
-**恢复**：关闭 Proteus，把备份的 `Translations` 还原。若安装前并没有 `*_en_US.qm`，也可以直接删掉本包新增的 `proteus_en_US.qm` 和 `qt_en_US.qm`。
+## Rebuild it yourself
 
-## 覆盖范围与已知限制
+`tools/` holds the generator scripts. They need Windows, an installed Proteus and 32-bit Python (for `QtCore4.dll`).
 
-- 保留原语言包全部 6,226 个主目录条目及原始查找键，并改为英文在前的双语。
-- 补入代码编辑器 554 条命令、语法高亮和样式翻译。
-- 对照 Proteus 自带 EXE/DLL 的菜单、对话框资源补入 1,902 种标签（含资源名大小写、CORE/PDS 名称的别名，别名数不等于独立翻译数）。
-- 补入 Qt 官方 4.8 中文目录里原包缺少的 53 条。
-- 保留元件标识、文件路径、协议名、数值、快捷键等技术内容。
-- **固定宽度的按钮、菜单、对话框可能截断双语文字。**
-- 帮助文档、样例工程、元件数据，以及程序里硬编码、没调用翻译接口的文字不在覆盖范围内。
-
-## 验证
-
-用目标机器上 Proteus 自带的 `QtCore4.dll`（32 位进程）逐条读取：主目录 15,765 条、Qt 目录 1,451 条全部通过；`en_US` 区域下两类文件均可自动加载；原始查找键、条目数、printf 占位符个数、制表符后的快捷键均已核对。详见 [`release/validation.json`](release/validation.json)。
-
-已在 Proteus 8.17 中实际加载并确认菜单、右键菜单和原理图界面显示正常（见上方截图）。其余界面未逐屏检查。
-
-## 自己重新生成
-
-`tools/` 是生成脚本，只在 Windows 上、且已安装 Proteus 时能完整运行（需要 32 位 Python 和 `QtCore4.dll`）：
-
-| 脚本 | 作用 |
+| Script | Job |
 |---|---|
-| `qm_catalog.py` | 读取完整 `.qm`，正确处理 Qt 的空字符串标记 |
-| `build_complete.py` | 生成双语目录，保留原始查找键并加入补译 |
-| `qscintilla_zh.py`、`new_labels_zh.py` | 补译词典 |
-| `extract_ui_resources.py`、`inspect_resources.py` | 读取 EXE/DLL 里的菜单与对话框资源 |
-| `qt4_verify.py` | 用 Proteus 自带的 Qt4 运行库验证读取 |
-| `package_complete.py` | 打包 |
+| `qm_catalog.py` | Read a full `.qm`, handling Qt's empty-string marker |
+| `build_complete.py` | Build the bilingual catalog and merge extra entries |
+| `qscintilla_zh.py`, `new_labels_zh.py` | Supplementary Chinese dictionaries |
+| `extract_ui_resources.py`, `inspect_resources.py` | Read menu and dialog resources from the EXE/DLLs |
+| `qt4_verify.py` | Verify lookups with Proteus's own Qt 4 runtime |
+| `package_complete.py` | Package the release |
 
-脚本通过环境变量取路径：`PROTEUS_DIR`（Proteus 安装目录，其下有 `BIN`）、`ORIGINAL_PATCH_DIR`（原中文语言包所在目录）。**路径改成环境变量后没有重新完整运行过**，仅做过语法检查；遇到问题请开 issue。
+Paths come from two environment variables: `PROTEUS_DIR` (install folder containing `BIN`) and `ORIGINAL_PATCH_DIR` (folder with the original Chinese pack). After switching from hard-coded paths to these variables the scripts were only syntax-checked, not fully re-run. Please open an issue if one breaks.
 
-## 来源、许可与免责
+## Sources, license and disclaimer
 
-- 脚本（`tools/`）以 MIT 许可发布，见 [LICENSE](LICENSE)。
-- `.qm` 语言文件和 `data/` 中的内容是对第三方内容的衍生与整合，**不适用上面的 MIT 许可**。来源与归属见 [NOTICE.md](NOTICE.md)。
-- Proteus 是 Labcenter Electronics 的商标与软件。本项目与 Labcenter 无关，**不提供 Proteus 本体、安装程序或许可证**，使用 Proteus 需要自行获得有效授权。
-- 如权利人认为本仓库内容侵权，请开 issue 或联系仓库所有者，将尽快处理。
-
----
-
-## English summary
-
-A bilingual (English first, Chinese second) UI language pack for **Proteus 8.17 Professional**. It ships four Qt `.qm` translation files (`proteus_{en_US,zh_CN}.qm`, `qt_{en_US,zh_CN}.qm`, identical per pair) that you copy into Proteus's `Translations` folder after backing it up. No executables or libraries are modified. Layout may truncate in fixed-width widgets. Proteus itself is **not** included; you need your own licensed copy. See [NOTICE.md](NOTICE.md) for third-party attribution.
+- Scripts in `tools/` are MIT-licensed: see [LICENSE](LICENSE).
+- The `.qm` files and `data/` are derived from third-party material and are **not** covered by that license. Attribution is in [NOTICE.md](NOTICE.md). The author and license of the original Chinese pack are unknown, so redistribution rights are not established.
+- Proteus is a product of Labcenter Electronics. This project is unaffiliated and ships **no** Proteus binaries, installer or license; you need your own legitimate copy.
+- If you are a rights holder and want something removed or credited, open an issue and it will be handled promptly.

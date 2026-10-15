@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="t d">
+  <title id="t">How Proteus picks the language file</title>
+  <desc id="d">The Windows region (en_US or zh_CN) makes Qt 4 load the matching proteus and qt .qm files. Both pairs carry the same bilingual content, so all four files are installed.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1D5B2B"/></marker>
+  </defs>
+  <rect width="1200" height="360" rx="26" fill="#EDE8D0"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <g id="steps">
+      <rect x="56" y="40" width="320" height="130" rx="8" fill="#FBFAF4" stroke="#CFC8AE" stroke-width="1.5"/>
+      <text x="80" y="76" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#6B655A">1 · SYSTEM REGION</text>
+      <text x="80" y="130" font-size="32" font-weight="700" fill="#1E1B16">en_US <tspan fill="#6B655A" font-weight="400" font-size="24">or</tspan> zh_CN</text>
+
+      <rect x="440" y="40" width="320" height="130" rx="8" fill="#FBFAF4" stroke="#CFC8AE" stroke-width="1.5"/>
+      <text x="464" y="76" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#6B655A">2 · QT 4 LOADS</text>
+      <text x="464" y="120" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" fill="#1E1B16">proteus_&lt;locale&gt;.qm</text>
+      <text x="464" y="150" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" fill="#1E1B16">qt_&lt;locale&gt;.qm</text>
+
+      <rect x="824" y="40" width="320" height="130" rx="8" fill="#FBFAF4" stroke="#CFC8AE" stroke-width="1.5"/>
+      <text x="848" y="76" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#6B655A">3 · YOU SEE</text>
+      <text x="848" y="126" font-size="26" font-weight="700" fill="#1E1B16">Open Project <tspan fill="#8E1B1B">打开工程</tspan></text>
+    </g>
+    <g stroke="#1D5B2B" stroke-width="3" fill="none">
+      <path d="M376 105 H436" marker-end="url(#a)"/>
+      <path d="M760 105 H820" marker-end="url(#a)"/>
+    </g>
+    <g id="files" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="20" fill="#1E1B16">
+      <rect x="56" y="214" width="262" height="48" rx="6" fill="#FBFAF4" stroke="#CFC8AE"/><text x="76" y="245">proteus_en_US.qm</text>
+      <rect x="331" y="214" width="262" height="48" rx="6" fill="#FBFAF4" stroke="#CFC8AE"/><text x="351" y="245">proteus_zh_CN.qm</text>
+      <rect x="606" y="214" width="262" height="48" rx="6" fill="#FBFAF4" stroke="#CFC8AE"/><text x="626" y="245">qt_en_US.qm</text>
+      <rect x="881" y="214" width="262" height="48" rx="6" fill="#FBFAF4" stroke="#CFC8AE"/><text x="901" y="245">qt_zh_CN.qm</text>
+    </g>
+    <text x="56" y="316" font-size="22" fill="#1E1B16">Each <tspan font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#8E1B1B">en_US</tspan> / <tspan font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#8E1B1B">zh_CN</tspan> pair is byte-identical, so install all four.</text>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="t d">
+  <title id="t">Proteus 8.17 bilingual language pack</title>
+  <desc id="d">English first, Chinese right after: a Proteus context menu showing labels such as "Place Wire Label 添加网络标号", with a schematic wire running beneath.</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#8F8869" opacity=".35"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="460" rx="26" fill="#EDE8D0"/>
+  <rect width="1200" height="460" rx="26" fill="url(#grid)"/>
+  <rect x="24" y="24" width="1152" height="412" rx="6" fill="none" stroke="#2B2E8F" stroke-opacity=".55" stroke-width="1.5"/>
+
+  <g id="title-block" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <text x="64" y="76" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" letter-spacing="1.5" fill="#6B655A">FOR PROTEUS 8.17 · QT .QM LANGUAGE PACK</text>
+    <text x="64" y="158" font-size="76" font-weight="800" fill="#1E1B16" letter-spacing="-1.5">English first,</text>
+    <text x="64" y="240" font-size="76" font-weight="800" fill="#8E1B1B" letter-spacing="-1">中文 right after.</text>
+    <text x="64" y="294" font-size="24" fill="#1E1B16">Every menu, dialog and right-click shows both</text>
+    <text x="64" y="326" font-size="24" fill="#1E1B16">languages. Four files, no EXE or DLL touched.</text>
+    <text x="64" y="366" font-size="22" fill="#6B655A">菜单、对话框、右键菜单全部中英对照 · 只替换 4 个语言文件</text>
+    <text x="64" y="402" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#6B655A">15,765 / 15,765 lookups verified on Qt 4</text>
+  </g>
+
+  <g id="menu" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" font-size="21">
+    <rect x="708" y="60" width="436" height="318" rx="8" fill="#FBFAF4" stroke="#CFC8AE" stroke-width="1.5"/>
+    <rect x="712" y="180" width="428" height="52" fill="#DCE9F5"/>
+    <g transform="translate(736 0)">
+      <text y="108" fill="#1E1B16">Open Project <tspan fill="#8E1B1B">打开工程</tspan></text>
+      <text y="160" fill="#1E1B16">Edit Wire Style <tspan fill="#8E1B1B">编辑连线样式</tspan></text>
+      <text y="212" fill="#1E1B16">Place Wire Label <tspan fill="#8E1B1B">添加网络标号</tspan></text>
+      <text y="264" fill="#1E1B16">Show All Wire Labels <tspan fill="#8E1B1B">显示网络标号</tspan></text>
+      <text y="316" fill="#1E1B16">Print Setup <tspan fill="#8E1B1B">打印设置</tspan></text>
+    </g>
+    <text x="1112" y="108" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#8A8470">Ctrl+O</text>
+    <line x1="724" y1="134" x2="1128" y2="134" stroke="#CFC8AE"/>
+    <line x1="724" y1="290" x2="1128" y2="290" stroke="#CFC8AE"/>
+  </g>
+
+  <g id="wire" stroke="#1D5B2B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 428 H668 V206 H708"/>
+    <path d="M668 428 H1136"/>
+    <circle cx="668" cy="428" r="6" fill="#1D5B2B"/>
+    <circle cx="64" cy="428" r="5" fill="#EDE8D0"/>
+    <circle cx="1136" cy="428" r="5" fill="#EDE8D0"/>
+  </g>
+</svg>
